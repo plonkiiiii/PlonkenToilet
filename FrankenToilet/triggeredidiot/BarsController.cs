@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Text;
 using FrankenToilet.Core;
 using HarmonyLib;
@@ -80,10 +80,30 @@ public sealed class BarsController : MonoBehaviour
         transform.localPosition = new Vector3(-1.06f, -0.53f, 1.1f);
 
         if(NewMovement.Instance == null) return;
+
+        bool movementLocked = !NewMovement.Instance.enabled;
+
         if(NewMovement.Instance.dead || !gunPanel.activeInHierarchy || Time.timeSinceLevelLoad < 5.0f) // give the player some time to process whats goin on
         {
             AdhdAmount = -1.0f;
             BoringAmount = -0.125f;
+        }
+
+        if (movementLocked)
+        {
+            lastPos = NewMovement.Instance.transform.position;
+
+            adhd.value = AdhdAmount;
+            if (BoringActive)
+                boring.value = BoringAmount;
+
+            if (ShowWarningText)
+            {
+                ShowWarningText = false;
+                warningTextCanvas.gameObject.SetActive(false);
+            }
+
+            return;
         }
 
         var deltaPos = (NewMovement.Instance.transform.position - lastPos).magnitude;
