@@ -312,6 +312,7 @@ public class ItemModMain
             NewMovement.instance.transform.Find("SlopeCheck").localScale = new Vector3(1 / sizeRandomIndex, 1 / sizeRandomIndex, 1 / sizeRandomIndex); // inverse of the size 
             NewMovement.instance.transform.Find("GroundCheck").localScale = new Vector3(.8f / sizeRandomIndex, .8f / sizeRandomIndex, .85f / sizeRandomIndex); // inverse of the size 
             NewMovement.instance.transform.Find("Main Camera").GetComponent<Camera>().nearClipPlane = 0.0001f;
+            NewMovement.instance.transform.Find("Main Camera").GetComponent<Camera>().farClipPlane = 10000f;
             if (sizeRandomIndex > 1)
             {
                 // makes player bigger if the player will get bigger to make sure the player can touch the ground
