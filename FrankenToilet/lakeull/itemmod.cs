@@ -26,7 +26,7 @@ namespace FrankenToilet.lakeull;
 public class ItemModMain
 {
     private static GameObject[] packedObjects = [];
-    private static AssetBundle bundle = AssetBundle.LoadFromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "lakeullsfunnybundle")); // change name of "bundled" to the file name of the bundle
+    private static AssetBundle? bundle; // change name of "bundled" to the file name of the bundle
     private static string bundlePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "lakeullsfunnybundle");
     public static GameObject itemCanvas;
     public static GameObject itemBox;
@@ -48,12 +48,6 @@ public class ItemModMain
     public static GameObject donutObject;
     public static GameObject osakaSignObject;
 
-    /*
-        * Todo:
-        * - update
-        * - add scene filtering to bundle loading
-        */
-
     [EntryPoint]
     public static void Awake()
     {
@@ -62,6 +56,26 @@ public class ItemModMain
         // Plugin startup logic
         LogHelper.LogInfo($"Lakeull's Plugin is loaded!");
         LogHelper.LogInfo(bundlePath);
+
+        // loads bundle
+        LogHelper.LogInfo("[lakeul] Loading assets");
+        byte[] data;
+        try
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string resourceName = $"FrankenToilet.lakeull.lakeullsfunnybundle";
+            var s = assembly.GetManifestResourceStream(resourceName);
+            s = s ?? throw new FileNotFoundException($"Could not find embedded resource '{resourceName}'.");
+            using var ms = new MemoryStream();
+            s.CopyTo(ms);
+            data = ms.ToArray();
+        }
+        catch (Exception ex)
+        {
+            LogHelper.LogError($"[lakeull] Error loading assets: " + ex.Message);
+            return;
+        }
+        bundle = AssetBundle.LoadFromMemory(data);
     }
 
     public static void OnSceneLoaded(Scene scene, LoadSceneMode lsm)
@@ -75,6 +89,9 @@ public class ItemModMain
         if(SceneHelper.CurrentScene != "Bootstrap" && SceneHelper.CurrentScene != "Main Menu" && SceneHelper.CurrentScene != "Intro")
         {
             canUseItem = false;
+            // i stole this from earthling
+            // it loads embed bundles i think
+            
             // load bundle, find the item canvas
             packedObjects = bundle.LoadAllAssets<GameObject>();
             foreach (GameObject gameObject in packedObjects)
@@ -85,19 +102,19 @@ public class ItemModMain
                 {
                     itemCanvas = GameObject.Instantiate(gameObject, new Vector3(0, 0, 0), Quaternion.identity);
                 }
-                if ($"{gameObject.name}" == "igloo")
+                else if ($"{gameObject.name}" == "igloo")
                 {
                     iglooObject = gameObject;
                 }
-                if ($"{gameObject.name}" == "orbit")
+                else if ($"{gameObject.name}" == "orbit")
                 {
                     orbitObject = gameObject;
                 }
-                if ($"{gameObject.name}" == "donut")
+                else if ($"{gameObject.name}" == "donut")
                 {
                     donutObject = gameObject;
                 }
-                if ($"{gameObject.name}" == "osakasign")
+                else if ($"{gameObject.name}" == "osakasign")
                 {
                     osakaSignObject = gameObject;
                 }

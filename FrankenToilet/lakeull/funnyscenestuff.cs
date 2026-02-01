@@ -1,4 +1,4 @@
-﻿using FrankenToilet.Core;
+﻿/*using FrankenToilet.Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 
 namespace FrankenToilet.lakeull;
 
+
 [EntryPoint]
 public class FunnySceneStuffs
 {
@@ -17,6 +18,8 @@ public class FunnySceneStuffs
     private static AssetBundle bundle = AssetBundle.LoadFromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "lakeullsfunnybundle")); // change name of "bundled" to the file name of the bundle
     private static string bundlePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "lakeullsfunnybundle");
     private static GameObject osakaSkyboxObject;
+
+    [EntryPoint]
     public static void Awake()
     {
         SceneManager.sceneLoaded += new UnityAction<Scene, LoadSceneMode>(OnSceneLoaded);
@@ -41,4 +44,4 @@ public class FunnySceneStuffs
             osakaSkyboxObject.transform.position = targetPos;
         }
     }
-}
+}*/

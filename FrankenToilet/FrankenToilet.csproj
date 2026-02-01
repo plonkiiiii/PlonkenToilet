@@ -86,12 +86,12 @@
     <None Remove="triggeredidiot\assets.bundle" />
     <None Remove="greycsont\assetstealfromrhythmgame.bundle" />
     <None Remove="earthling\toiletonfire.bundle" />
-    <None Remove="lakeull\lakeullsfunnybundle.bundle" />
+    <None Remove="lakeull\lakeullsfunnybundle" />
     <EmbeddedResource Include="doomahreal\veryuniqueassetsnametrust.bundle" />
     <EmbeddedResource Include="triggeredidiot\assets.bundle" />
     <EmbeddedResource Include="greycsont\assetstealfromrhythmgame.bundle" />
     <EmbeddedResource Include="earthling\toiletonfire.bundle" />
-    <EmbeddedResource Include="lakeull\lakeullsfunnybundle.bundle" />
+    <EmbeddedResource Include="lakeull\lakeullsfunnybundle" />
   </ItemGroup>
 
 </Project>
