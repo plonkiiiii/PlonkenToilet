@@ -74,7 +74,7 @@ public class PANDEISHEREAHHH : MonoBehaviour
 
     void ScheduleNextFlick()
     {
-        float t = Mathf.Lerp(10f, 5f, Mathf.Clamp01(timer / 42f));
+        float t = Mathf.Lerp(8.5f, 3.5f, Mathf.Clamp01(timer / 42f));
         nextFlickTime = timer + Random.Range(t - 1f, t + 1f);
     }
 
@@ -101,7 +101,6 @@ public class PANDEISHEREAHHH : MonoBehaviour
         if (active)
         {
             float distToTarget = GetAnchoredDistance(pointer, targetCircle);
-            float prevProgress = progress;
 
             if (distToTarget <= circleHitRadius)
                 progress = Mathf.MoveTowards(progress, 1f, barFillSpeed * dt);

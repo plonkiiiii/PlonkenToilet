@@ -26,7 +26,7 @@ public static class OpenPatch
         var dozerPrefab = bundle.LoadAsset<GameObject>("Assets/Custom/imfrakeninmykill/dozer/IKEEPONGROOVINGIKEEPONMOVING.prefab");
         var pandePrefab = bundle.LoadAsset<GameObject>("Assets/Custom/imfrakeninmykill/pande/Pandepande.prefab");
 
-        bool pickDozer = Random.value > 0.35f;
+        bool pickDozer = Random.value > 0.5f;
 
         if (pickDozer && _dozerInstance == null)
         {
