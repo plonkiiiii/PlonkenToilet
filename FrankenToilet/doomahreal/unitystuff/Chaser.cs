@@ -34,11 +34,8 @@ public class Chaser : MonoBehaviour
         target = MonoSingleton<NewMovement>.Instance.gameObject.transform;
         source = GetComponent<AudioSource>();
 
-        Vector3 randomDir = Random.onUnitSphere;
-        randomDir.z = 0;
-        if (randomDir.y < 0) randomDir.y *= -1;
-
-        Vector3 spawnPos = target.position + randomDir.normalized * distanceFromTarget;
+        Vector2 dir2D = Random.insideUnitCircle.normalized;
+        Vector3 spawnPos = target.position + new Vector3(dir2D.x, dir2D.y, 0f) * distanceFromTarget;
         transform.position = spawnPos;
 
         speed = 0;
