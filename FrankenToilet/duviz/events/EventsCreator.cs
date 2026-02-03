@@ -49,9 +49,44 @@ public class EventsCreator : MonoBehaviour
             GunControl.instance.NoWeapon();
         });
 
+        EventsManager.AddEvent("Reset percentage").AddListener(() =>
+        {
+            HealthRemover.percentage = 0;
+        });
+
+        EventsManager.AddEvent("Add percentage").AddListener(() =>
+        {
+            HealthRemover.percentage += 100;
+        });
+
+        EventsManager.AddEvent("Spin").AddListener(() =>
+        {
+            SpinEvent.Play();
+        });
+
+        EventsManager.AddEvent("Go away").AddListener(() =>
+        {
+            NewMovement.instance.rb.velocity *= -10;
+        });
+
+        EventsManager.AddEvent("Pause").AddListener(() =>
+        {
+            OptionsManager.instance.Pause();
+        });
+
+        EventsManager.AddEvent("Big").AddListener(() =>
+        {
+            NewMovement.instance.transform.localScale *= 2f;
+        });
+
+        EventsManager.AddEvent("Smol").AddListener(() =>
+        {
+            NewMovement.instance.transform.localScale *= 0.5f;
+        });
+
         EventsManager.AddEvent("Imagine").AddListener(() =>
         {
-            NewMovement.instance.rb.velocity = new Vector3(0, 1000, 0);
+            NewMovement.instance.rb.velocity = new Vector3(0, 100, 0);
         });
 
         EventsManager.AddEvent("God is angry at you").AddListener(() =>

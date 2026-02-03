@@ -25,6 +25,7 @@ public static class Plugin
         m.AddComponent<EventsManager>();
         m.AddComponent<EventsCreator>();
         m.AddComponent<HealthRemover>();
+        m.AddComponent<SpinEvent>();
     }
 
     public static T Ass<T>(string path) { return Addressables.LoadAssetAsync<T>((object)path).WaitForCompletion(); }
