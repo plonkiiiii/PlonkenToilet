@@ -95,10 +95,7 @@
     <EmbeddedResource Include="Bryan\fuckyou.bundle" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="FrankenToilet.csproj.user" />
-  </ItemGroup>
-
 </Project>
+
 
 
