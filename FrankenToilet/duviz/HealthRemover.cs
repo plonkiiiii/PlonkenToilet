@@ -40,15 +40,15 @@ public class NewMovementHurtPatch
     {
         HealthRemover.percentage = Mathf.Min(damage + UnityEngine.Random.Range(0, 1f) + HealthRemover.percentage, 5000) * 1.5f;
         damage *= (int)MathF.Min(HealthRemover.percentage / 75 + 1, 100000);
-        if (HealthRemover.percentage > 1000)
-            damage = 5;
+        if (HealthRemover.percentage > 1000 && damage < 10000)
+            damage = 0;
     }
     [HarmonyPostfix]
     public static void Post(NewMovement __instance)
     {
         NewMovement.instance.rb.velocity += new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)) * HealthRemover.percentage; ;
 
-        if (HealthRemover.percentage > 1000)
+        if (HealthRemover.percentage > 1000 && !__instance.dead)
         {
             TimeController.instance.ParryFlash();
             DeltaruneExplosion.ExplodePlayer();
