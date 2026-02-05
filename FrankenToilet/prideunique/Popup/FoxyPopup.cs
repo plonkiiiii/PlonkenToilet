@@ -66,7 +66,7 @@ public static class FoxyPopup
         videoPlayer.targetTexture = renderTexture;
 
         RawImage rawImage = go.GetComponentInChildren<RawImage>();
-        rawImage.rectTransform.sizeDelta = new Vector2(FoxyVideoClip.width, FoxyVideoClip.height);
+        rawImage.rectTransform.sizeDelta = new Vector2(FoxyVideoClip.width * 2, FoxyVideoClip.height * 2);
         rawImage.texture = renderTexture;
         rawImage.raycastTarget = false;
 
