@@ -31,6 +31,8 @@ public static class FoxyPopup
 
     private static IEnumerator FoxyHandler()
     {
+        yield return new WaitForSeconds(RandomForMe.Next(30.0f, 40.0f));
+
         while (true)
         {
             if (AssetsController.IsSlopSafe)
