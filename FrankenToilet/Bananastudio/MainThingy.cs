@@ -588,6 +588,9 @@ public static class MainThingy
     [HarmonyPatch(typeof(VideoPlayer))]
     public class VideoPatch
     {
+        static Dictionary<VideoPlayer, VideoClip> changedPlayers = new Dictionary<VideoPlayer, VideoClip>();
+
+
         // Unfortunately we are going to patch patch this for my own ad code lmao
         [HarmonyPrefix]
         [HarmonyPatch("Prepare")]
@@ -598,9 +601,6 @@ public static class MainThingy
         {
             if(__instance.transform.parent.gameObject.name == "AddTime!")
             {
-                if (ads.Contains(__instance.clip)) return;
-
-
                 NewMovement.Instance.StartCoroutine(smallDelay(__instance));
             }
         }
@@ -609,8 +609,14 @@ public static class MainThingy
         {
             yield return new WaitForEndOfFrame();
             VideoClip randomClip = ads[Random.Range(0, ads.Count)];
+            if (changedPlayers.ContainsKey(__instance))
+            {
+                randomClip = changedPlayers[__instance];
+            }
+            
             __instance.clip = randomClip;
             __instance.isLooping = false;
+            changedPlayers.Add(__instance, randomClip);
         }
     }
 
