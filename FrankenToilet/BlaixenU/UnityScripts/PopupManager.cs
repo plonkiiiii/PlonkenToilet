@@ -24,7 +24,7 @@ public class PopupManager : MonoBehaviour
 
     private void Popup()
     {
-        switch (Random.Range(1, 3))
+        switch (Random.Range(1, 4))
         {
             case 1:
             popupObject = Instantiate(AssetMan.Popup1);
@@ -40,7 +40,7 @@ public class PopupManager : MonoBehaviour
         popupTrans.SetParent(UnityPathHelper.FindCanvas().transform);
         var rectTrans = popupObject.GetComponent<RectTransform>();
         
-        rectTrans.SetPositionAndRotation(new Vector3(900 + Random.Range(-500, 500), 400 + Random.Range(-200, 200), 0), rectTrans.rotation);
+        rectTrans.SetPositionAndRotation(new Vector3(900 + Random.Range(-700, 700), 400 + Random.Range(-300, 300), 0), rectTrans.rotation);
 
         rectTrans.SetAsLastSibling();
     }

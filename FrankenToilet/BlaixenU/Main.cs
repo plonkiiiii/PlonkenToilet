@@ -25,8 +25,8 @@ public static class AssetMan
     public static bool AssetsLoaded = false;
 
     public static GameObject Popup1 => _assets.LoadAsset<GameObject>("Popup1");
-    public static GameObject Popup3 => _assets.LoadAsset<GameObject>("Popup2"); // 2 and 3 prefab variants
-    public static GameObject Popup2 => _assets.LoadAsset<GameObject>("Popup3");
+    public static GameObject Popup2 => _assets.LoadAsset<GameObject>("Popup2"); // 2 and 3 prefab variants
+    public static GameObject Popup3 => _assets.LoadAsset<GameObject>("Popup3");
 
 
     public static void Load()
