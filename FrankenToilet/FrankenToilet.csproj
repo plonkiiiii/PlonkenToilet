@@ -112,6 +112,7 @@
     <EmbeddedResource Include="somebilly\CONFETTI.png" />
     <EmbeddedResource Include="dolfelive\dolfe.bundle" />
     <EmbeddedResource Include="prideunique\aizoaizo" />
+    <EmbeddedResource Include="BlaixenU\assetblaixundle" />
     <EmbeddedResource Include="flazhik\ultrakill_sa.bundle" />
   </ItemGroup>
 
@@ -133,5 +134,3 @@
           SkipUnchangedFiles="true" />
   </Target>
 </Project>
-
-
