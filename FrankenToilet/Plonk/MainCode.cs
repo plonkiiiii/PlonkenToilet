@@ -15,12 +15,15 @@ public static class MainCode
     }
     public static float gravitySwap = 0f;
     [PatchOnEntry]
-    [HarmonyPrefix, HarmonyPatch(typeof(NewMovement), nameof(NewMovement.Jump))]
-    public static void FuckingFuckGravity(NewMovement __instance)
+    public static class Patches 
     {
-        Vector3 gravDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-        Physics.gravity = gravDir * 40f;
-        gravitySwap = Random.Range(1f, 10f);
+        [HarmonyPrefix, HarmonyPatch(typeof(NewMovement), nameof(NewMovement.Jump))]
+        public static void FuckingFuckGravity(NewMovement __instance)
+        {
+            Vector3 gravDir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+            Physics.gravity = gravDir * 40f;
+            gravitySwap = Random.Range(1f, 10f);
+        }
     }
 } 
 
