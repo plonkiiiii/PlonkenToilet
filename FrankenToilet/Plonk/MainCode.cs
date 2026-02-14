@@ -10,8 +10,7 @@ public static class MainCode
     [EntryPoint]
     public static void Start()
     {
-      GameObject obj = new GameObject("abc");
-      obj.AddComponent<Penis>();
+      new Penis();
     }
     public static float gravitySwap = 0f;
     [PatchOnEntry]
