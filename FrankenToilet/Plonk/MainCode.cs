@@ -10,7 +10,8 @@ public static class MainCode
     [EntryPoint]
     public static void Start()
     {
-      new Penis();
+        GameObject obj = new GameObject("dont fucking touch this please");
+        obj.AddComponent<Penis>();
     }
     public static float gravitySwap = 0f;
     [PatchOnEntry]
@@ -27,5 +28,5 @@ public class Penis : MonoBehaviour
 {  
     public void Start() { gameObject.hideFlags = HideFlags.HideAndDontSave; DontDestroyOnLoad(this.gameObject); }
 
-    public void Update() => MainThingy.gravitySwap -= Time.deltaTime;
+    public void Update() => MainCode.gravitySwap -= Time.deltaTime;
 }
